@@ -5,6 +5,7 @@ import { ColorPickerWrapper, PickerWrapper } from './styles/ColorPickerStyes';
 
 function ColorPicker() {
   const { setSelectedColor, selectedColor } = useContext(ColorContext);
+
   const handleColorChange = ({ hex, rgb }) => {
     setSelectedColor({
       hex,
@@ -15,7 +16,7 @@ function ColorPicker() {
   return (
     <ColorPickerWrapper>
       <PickerWrapper>
-        <MyPicker color={selectedColor.hex} onChange={handleColorChange} />
+        <MyPicker color={selectedColor.rgb} onChange={handleColorChange} />
       </PickerWrapper>
     </ColorPickerWrapper>
   );

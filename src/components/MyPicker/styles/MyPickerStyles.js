@@ -14,6 +14,10 @@ export const HueWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
+export const AlphaWrapper = styled(HueWrapper)`
+  border: 1px solid gray;
+`;
+
 export const EditableInputWrapper = styled.div`
   position: relative;
 

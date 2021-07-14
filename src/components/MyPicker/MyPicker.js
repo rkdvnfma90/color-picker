@@ -3,18 +3,18 @@ import { CustomPicker } from 'react-color';
 import { ColorContext } from '../../contexts/colorContext';
 import {
   HueWrapper,
+  AlphaWrapper,
   SaturationWrapper,
   EditableInputWrapper,
 } from './styles/MyPickerStyles';
 import {
   Saturation,
   Hue,
+  Alpha,
   EditableInput,
 } from 'react-color/lib/components/common';
 
-function MyPicker({ hsl, hsv, hex, onChange }) {
-  const { selectedColor } = useContext(ColorContext);
-
+function MyPicker({ hsl, hsv, rgb, hex, onChange }) {
   return (
     <>
       <SaturationWrapper>
@@ -23,8 +23,11 @@ function MyPicker({ hsl, hsv, hex, onChange }) {
       <HueWrapper>
         <Hue hsl={hsl} onChange={onChange} />
       </HueWrapper>
+      <AlphaWrapper>
+        <Alpha hsl={hsl} rgb={rgb} onChange={onChange} />
+      </AlphaWrapper>
       <EditableInputWrapper>
-        <EditableInput value={selectedColor.hex} onChange={onChange} />
+        <EditableInput value={hex} onChange={onChange} />
       </EditableInputWrapper>
     </>
   );
