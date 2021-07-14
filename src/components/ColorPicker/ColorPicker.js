@@ -1,12 +1,21 @@
+import { useContext } from 'react';
+import { ColorContext } from '../../contexts/colorContext';
 import MyPicker from '../MyPicker/MyPicker';
 import { ColorPickerWrapper, PickerWrapper } from './styles/ColorPickerStyes';
 
 function ColorPicker() {
-  const handleColorChange = ({ hex, rgb }) => console.log(hex, rgb);
+  const { setSelectedColor, selectedColor } = useContext(ColorContext);
+  const handleColorChange = ({ hex, rgb }) => {
+    setSelectedColor({
+      hex,
+      rgb,
+    });
+  };
+
   return (
     <ColorPickerWrapper>
       <PickerWrapper>
-        <MyPicker onChange={handleColorChange} />
+        <MyPicker color={selectedColor.hex} onChange={handleColorChange} />
       </PickerWrapper>
     </ColorPickerWrapper>
   );
