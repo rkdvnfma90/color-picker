@@ -18,8 +18,12 @@ import {
   Alpha,
   EditableInput,
 } from 'react-color/lib/components/common';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import useClipboardCopy from '../../hooks/useClipboardCopy';
 
 function MyPicker({ hsl, hsv, rgb, hex, onChange }) {
+  const [setCopied] = useClipboardCopy();
+
   return (
     <>
       <SaturationWrapper>
@@ -61,20 +65,28 @@ function MyPicker({ hsl, hsv, rgb, hex, onChange }) {
       </RgbaWrapper>
 
       <CopyButtonWrapper>
-        <CopyButton
-          type='button'
-          fontColor={getContrastColorByHex(hex)}
-          backgroundColor={hex}
+        <CopyToClipboard text={hex} onCopy={() => setCopied(true)}>
+          <CopyButton
+            type='button'
+            fontColor={getContrastColorByHex(hex)}
+            backgroundColor={hex}
+          >
+            HEX Copy!
+          </CopyButton>
+        </CopyToClipboard>
+
+        <CopyToClipboard
+          text={`rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a})`}
+          onCopy={() => setCopied(true)}
         >
-          HEX Copy!
-        </CopyButton>
-        <CopyButton
-          type='button'
-          fontColor={getContrastColorByHex(hex)}
-          backgroundColor={hex}
-        >
-          rgba Copy!
-        </CopyButton>
+          <CopyButton
+            type='button'
+            fontColor={getContrastColorByHex(hex)}
+            backgroundColor={hex}
+          >
+            rgba Copy!
+          </CopyButton>
+        </CopyToClipboard>
       </CopyButtonWrapper>
     </>
   );
