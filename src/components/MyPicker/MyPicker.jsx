@@ -1,4 +1,5 @@
 import { CustomPicker } from 'react-color';
+import Toast from '../Toast/Toast';
 import {
   HueWrapper,
   AlphaWrapper,
@@ -20,12 +21,14 @@ import {
 } from 'react-color/lib/components/common';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import useClipboardCopy from '../../hooks/useClipboardCopy';
+import { COPIED_MESSAGE } from '../../constants/messageConstants';
 
 function MyPicker({ hsl, hsv, rgb, hex, onChange }) {
-  const [setCopied] = useClipboardCopy();
+  const [copied, setCopied] = useClipboardCopy();
 
   return (
     <>
+      <Toast copied={copied}>{COPIED_MESSAGE}</Toast>
       <SaturationWrapper>
         <Saturation hsl={hsl} hsv={hsv} onChange={onChange} />
       </SaturationWrapper>

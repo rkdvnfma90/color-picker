@@ -17,7 +17,7 @@ function useClipboardCopy() {
     };
   }, [copied]);
 
-  return [setCopied];
+  return [copied, setCopied];
 }
 
 export default useClipboardCopy;
