@@ -2,7 +2,6 @@ import styled from 'styled-components/macro';
 
 export const ToastWrapper = styled.div`
   bottom: 1rem;
-
   position: fixed;
   display: flex;
   justify-content: center;
